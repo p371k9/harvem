@@ -1,0 +1,24 @@
+import scrapy_splash  
+req = scrapy_splash.SplashRequest(url='http://www.konyveles-miskolcon.hu', endpoint='render.html', args={'wait': 2})
+req = scrapy_splash.SplashRequest(url='https://lakas-bgy.github.io/kapcsolat/', endpoint='render.html', args={'wait': 2, 'images': 0})
+fetch(req)
+
+
+from urllib.parse import urlparse  
+domain = urlparse(response.url).netloc 
+
+
+from scrapy.linkextractors import LinkExtractor 
+le = scrapy.linkextractors.LinkExtractor(allow_domains=domain) 
+for l in le.extract_links(response):                                    
+     print(l.url)
+     
+
+import re
+from html import unescape
+source1 = unescape(response.text).replace('<em>', '')
+mails = re.findall(r'[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}', source1)
+mails
+mails = list(set(mails))    #unique it!
+mails
+     
