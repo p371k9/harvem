@@ -1,6 +1,6 @@
 # harvem
 
-### staus: PRE ALPHA!!!
+### status: PRE ALPHA!!!
 
 Harvest email addresses with Scrapy-Splash from a specific website:
 
