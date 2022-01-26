@@ -12,8 +12,8 @@ from scrapy.shell import inspect_response
 class HarvSpider(scrapy.Spider):
     name = 'harv'
     allowed_domains = []    #['localhost']
-    #start_urls = ['https://munkaspart.hu/kapcsolat/kapcsolat', 'http://www.hotelbenczur.hu', 'http://amiidonk.hu', 'http://www.konyveles-miskolcon.hu/', 'https://www.anytimefitness.com']
-    start_urls = ['https://munkaspart.hu']  # https://lakas-bgy.github.io/kapcsolat/  http://amiidonk.hu/bemutatkozas
+    #start_urls = ['http://www.hotelbenczur.hu', 'http://www.konyveles-miskolcon.hu/', 'https://www.anytimefitness.com']
+    start_urls = ['http://www.hotelbenczur.hu']  # https://lakas-bgy.github.io/kapcsolat/  http://amiidonk.hu/bemutatkozas
     
     def start_requests(self):
         # https://github.com/scrapy/scrapy/blob/9dd77b42b5485856c7647c699c80532f5db2e5b6/scrapy/pipelines/files.py#L508
@@ -44,11 +44,4 @@ class HarvSpider(scrapy.Spider):
         #inspect_response(response, self)         
         
         for l in le.extract_links(response):                                    
-            yield scrapy_splash.SplashRequest(url=l.url, callback=self.subParse, endpoint='render.html', args={'wait': 2, 'images': 0, 'start_url': response.meta['splash']['args']['start_url'], 'az': response.meta['splash']['args']['az']})
-      
-        
-        
-        
-        
-
-
+            yield scrapy_splash.SplashRequest(url=l.url, callback=self.subParse, endpoint='render.html', args={'wait': 2, 'images': 0, 'start_url': response.meta['splash']['args']['start_url'], 'az': response.meta['splash']['args']['az']})            
