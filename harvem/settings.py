@@ -34,8 +34,8 @@ CONCURRENT_REQUESTS = 1 #32
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+#CONCURRENT_REQUESTS_PER_DOMAIN = 1 #16
+#CONCURRENT_REQUESTS_PER_IP = 1  #16
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -96,6 +96,7 @@ ITEM_PIPELINES = {
 
 SPLASH_URL = 'http://0.0.0.0:8050'
 DOWNLOADER_MIDDLEWARES = {
+    'harvem.middlewares.JustDelayMiddleware': 543,
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
