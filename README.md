@@ -1,6 +1,6 @@
 # harvem
 
-E-mail címek begyűjtése webhely(ek)ről. 
+Harvesting email addresses from website(s).
 
 ### status: PRE ALPHA!!!
 
