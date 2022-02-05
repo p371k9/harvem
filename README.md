@@ -1,18 +1,31 @@
 # harvem
 
+E-mail címek begyűjtése webhely(ek)ről. 
+
 ### status: PRE ALPHA!!!
 
-Harvesting email addresses with Scrapy-Splash from a specific website:
+Example command lines. First with a normal Scrapy request, second with a Scrapy-Splash.
+
+To collect email addresses from a specific website:
 
 ```
 .../harvem$ scrapy crawl site -a url=http://www.autoszovgyongyos.hu/  -o o.csv
+.../harvem$ scrapy crawl sitesplash -a url=http://www.autoszovgyongyos.hu/  -o o.csv
 ```
 
-or from multiple websites listed in a .csv file: 
+To collect email from multiple sites listed in a .csv file:
 ```
 .../harvem$ scrapy crawl csv -a file=teszt/tesztin.csv -o o2.csv
+.../harvem$ scrapy crawl csvsplash -a file=teszt/tesztin.csv -o o2.csv
 
 ```
 
-Tested with Scrapy 2.5.1
+From list file:
+```
+.../harvem$ scrapy crawl list -a file=teszt/tesztin.lll -o o3.csv
+.../harvem$ scrapy crawl listsplash -a file=teszt/tesztin.lll -o o3.csv
+
+```
+
+Tested with Scrapy 2.0.1
 

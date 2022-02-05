@@ -27,7 +27,7 @@ LEA = ["contact", "about", "carreer", "touch", "connect"   # en
 #LEA = []  # there are no restrictions, so it crawls all pages
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 1 #32
+#CONCURRENT_REQUESTS = 1 #32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -94,6 +94,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
+""" >>> harvem/spiderclasses.py
 SPLASH_URL = 'http://0.0.0.0:8050'
 DOWNLOADER_MIDDLEWARES = {
     'harvem.middlewares.JustDelayMiddleware': 543,
@@ -106,5 +107,5 @@ SPIDER_MIDDLEWARES = {
 }
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
-
+"""
 
