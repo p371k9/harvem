@@ -109,7 +109,7 @@ from twisted.internet.defer import Deferred
 
 class JustDelayMiddleware(object):
     def process_request(self, request, spider):
-        delay = spider.settings.get('DOWNLOAD_DELAY')  # request.meta.get('delay_request', None)
+        delay = int(spider.settings.get('DOWNLOAD_DELAY'))  # request.meta.get('delay_request', None)
         spider.logger.info('getting DOWNLOAD_DELAY: %d' % delay)
         if delay:
             d = Deferred()

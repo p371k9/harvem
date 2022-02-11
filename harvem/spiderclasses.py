@@ -49,7 +49,7 @@ class AbstractSpider(scrapy.Spider, metaclass=ABCMeta):
 
         domain = urlparse(response.url).netloc
         le = scrapy.linkextractors.LinkExtractor(allow=self.settings.get('LEA'), allow_domains=domain)
-        #self.logger.info('Download_delay== %d',self.settings.get('DOWNLOAD_DELAY'))
+        #print(self.settings.get('LEA'))
         #inspect_response(response, self)         
         for l in le.extract_links(response):      
             yield self.req(url=l.url, callback=self.subParse, start_url=self.getstarturl(response), az=self.getaz(response))      
@@ -63,7 +63,11 @@ class NormalSpider(AbstractSpider):
         return response.meta['start_url']
 
     def req(self, url, callback, start_url, az):
-        return scrapy.Request(url=url, callback=callback, meta={'start_url': start_url, 'az': az})
+        r = scrapy.Request(url=url, callback=callback, meta={'start_url': start_url, 'az': az})
+        prox = self.settings.get('PROXY') # settings.py-ben nagybetűs, a meta-ban kicsi
+        if type(prox) == str:            
+            r.meta['proxy'] = prox
+        return r
             
 class SplashSpider(AbstractSpider):
     custom_settings = {
@@ -88,7 +92,11 @@ class SplashSpider(AbstractSpider):
         return response.meta['splash']['args']['start_url']
 
     def req(self, url, callback, start_url, az):
-        return scrapy_splash.SplashRequest(url=url, callback=callback, endpoint='render.html', args={'wait': 1, 'timeout': 10, 'images': 0, 'start_url': start_url, 'az': az})
+        r = scrapy_splash.SplashRequest(url=url, callback=callback, endpoint='render.html', args={'wait': 1, 'timeout': 10, 'images': 0, 'start_url': start_url, 'az': az})
+        prox = self.settings.get('PROXY')
+        if type(prox) == str:
+            r.meta['splash']['args']['proxy'] = prox
+        return r
         
 class Site:    
     def __init__(self, url=None, *args, **kwargs):        

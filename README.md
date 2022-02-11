@@ -27,5 +27,12 @@ From list file:
 
 ```
 
+With proxy: 
+```
+.../harvem$ scrapy crawl site -s PROXY=http://localhost:8118 -a url=http://www.autoszovgyongyos.hu/  -o o.csv
+.../harvem$ scrapy crawl sitesplash -s PROXY=http://localhost:8118 -a url=http://www.autoszovgyongyos.hu/  -o o.csv
+```
+If you are using docked Splash and the proxy is running on localhost, check the end of the settings.py file. More info: https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal/61001152
+
 Tested with Scrapy 2.0.1
 
