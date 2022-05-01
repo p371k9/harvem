@@ -1,6 +1,6 @@
 # harvem
 
-Harvesting email addresses from website(s).
+Harvesting email addresses from website(s). Another email scraper.
 
 Example command lines. First with a normal Scrapy request, second with a Scrapy-Splash.
 
