@@ -35,9 +35,9 @@ class AbstractSpider(scrapy.Spider, metaclass=ABCMeta):
         mails = re.findall(r'[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}', source1)
         return list(set(mails)) #unique it. but... Csak a tiszta output miatt. Különben a DuplicatesPipeline önmagában is elvégzi amit kell        
         
-    def subParse(self, response):
-        item = hItem()
+    def subParse(self, response):        
         for m in self.getMails(response):
+            item = hItem()
             item['az'] = self.getaz(response)
             item['site'] = self.getstarturl(response)
             item['mail'] = m
