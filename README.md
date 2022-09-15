@@ -2,6 +2,8 @@
 
 Harvesting email addresses from website(s). Another email scraper.
 
+The scrapy_splash package must be installed even if you are not going to use Splash.
+
 Example command lines. First with a normal Scrapy request, second with a Scrapy-Splash.
 
 To collect email addresses from a specific website:
