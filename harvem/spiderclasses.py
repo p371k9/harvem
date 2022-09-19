@@ -31,12 +31,14 @@ class AbstractSpider(scrapy.Spider, metaclass=ABCMeta):
         pass
         
     def getMails(self, response):
-        source1 = unescape(response.text).replace('<em>', '').replace('%20', " ")
+        source1 = unescape(response.text).replace('<em>', '').replace('%20', " ").replace('u003e', ' ')
         mails = re.findall(r'[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}', source1)
         return list(set(mails)) #unique it. but... Csak a tiszta output miatt. Különben a DuplicatesPipeline önmagában is elvégzi amit kell        
         
     def subParse(self, response):        
         for m in self.getMails(response):
+            if m[-4:] in ('.png', '.jpg'):
+                continue
             item = hItem()
             item['az'] = self.getaz(response)
             item['site'] = self.getstarturl(response)
