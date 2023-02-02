@@ -19,12 +19,16 @@ USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False  #True
 
+#LOG_LEVEL = 'INFO'
+
 # set up Link Extractor's param:Allows 
 LEA = ["contact", "about", "carreer", "touch", "connect"   # en  
     , "kapcsolat", "koszonto", "bemutatkozas", "rolunk", "impresszum", "kezdolap", "elerhetoseg" # hu
     , 'kontakt', 'willkommen', 'einfuhrung', 'uber-uns', 'impressum' # de
 ]   # add more!! 
 #LEA = []  # there are no restrictions, so it crawls all pages
+
+INID = 'az' 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 1 #32

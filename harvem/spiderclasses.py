@@ -132,5 +132,8 @@ class CsvClass:
             csv_reader = csv.DictReader(csv_file, delimiter=',')
             #line_count = 0
             for row in csv_reader:
-                yield self.req(url=row["site"], callback=self.parse, start_url=row["site"], az=row["az"])                
+                if len(row["website"]) == 0:
+                    self.logger.info('No website specified, so skipped: %s' % row[self.settings.get('INID')])                    
+                    continue            
+                yield self.req(url=row["website"], callback=self.parse, start_url=row["website"], az=row[self.settings.get('INID')])                
                           
