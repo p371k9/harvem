@@ -28,7 +28,7 @@ LEA = ["contact", "about", "carreer", "touch", "connect"   # en
 ]   # add more!! 
 #LEA = []  # there are no restrictions, so it crawls all pages
 
-INID = 'az' 
+ID = 'az' 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 1 #32

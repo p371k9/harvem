@@ -40,7 +40,7 @@ Set the LEA variable so that you can determine which pages to crawl. The followi
 
 You can specify the identifier field of the input csv like this:
 ```
-scrapy crawl csv -s INID=placeid -a file=../mailwalk/teszt/pizza.tatabanya2.csv -o tatab.csv
+scrapy crawl csv -s ID=placeid -a file=../mailwalk/teszt/pizza.tatabanya2.csv -o tatab.csv
 ```
 
 If you are using dockered Splash and the proxy is running on localhost, check the end of the settings.py file. More info: https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal/61001152

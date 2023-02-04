@@ -128,12 +128,13 @@ class CsvClass:
    
     def start_requests(self):
         # https://github.com/scrapy/scrapy/blob/9dd77b42b5485856c7647c699c80532f5db2e5b6/scrapy/pipelines/files.py#L508
+        id = self.settings.get('ID')
         with open(self.file) as csv_file:
             csv_reader = csv.DictReader(csv_file, delimiter=',')
             #line_count = 0
             for row in csv_reader:
                 if len(row["website"]) == 0:
-                    self.logger.info('No website specified, so skipped: %s' % row[self.settings.get('INID')])                    
+                    self.logger.info('No website specified, so skipped: %s' % row[id])                    
                     continue            
-                yield self.req(url=row["website"], callback=self.parse, start_url=row["website"], az=row[self.settings.get('INID')])                
+                yield self.req(url=row["website"], callback=self.parse, start_url=row["website"], az=row[id])                
                           
